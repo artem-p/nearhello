@@ -1,11 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect} from 'react';
+import * as nearApi from 'near-api-js';
 import { Form, InputGroup, FormControl, Button, Placeholder } from 'react-bootstrap';
 
 
 import './App.css';
 
 function App() {
+  const { connect } = nearApi;
   const [greetingInput, setGreetingInput] = useState("")
   const [greetingFromBlockchain, setGreetingFromBlockchain] = useState("")
 
@@ -36,11 +38,26 @@ function App() {
       near = await connect(testnet_config);
 
       try {
-        
+        const getGreetingRawResult = await near.connection.provider.query({
+          request_type: "call_function",
+          account_id: 'nearspring-hello.artyom-p.testnet',
+          method_name: 'get_greeting',
+          args_base64: "e30=",
+          finality: "optimistic",
+      });
+
+      console.log(getGreetingRawResult);
+
+      const formattedResult = JSON.parse(Buffer.from(getGreetingRawResult.result).toString());
+      console.log(formattedResult);
+      
       } catch (error) {
+          console.log(error)
           return;
       }
-  }
+    }
+
+    fetchInfo()
   }, [])
 
   const Hello = () => {
