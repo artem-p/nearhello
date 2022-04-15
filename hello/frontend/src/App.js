@@ -7,9 +7,48 @@ import './App.css';
 
 function App() {
   const [greetingInput, setGreetingInput] = useState("")
+  const [greetingFromBlockchain, setGreetingFromBlockchain] = useState("")
+
+  const testnet_config = {
+    networkId: "testnet",
+    nodeUrl: "https://rpc.testnet.near.org",
+    walletUrl: "https://wallet.testnet.near.org",
+    helperUrl: "https://helper.testnet.near.org",
+    explorerUrl: "https://explorer.testnet.near.org",
+    deps: {}
+  };
+
+  let near;
+
 
   const handleSubmit = () => {
     console.log(greetingInput);
+  }
+
+  const fetchGreeting = () => {
+
+  }
+
+
+  useEffect(() => {
+    async function fetchInfo() {
+
+      near = await connect(testnet_config);
+
+      try {
+        
+      } catch (error) {
+          return;
+      }
+  }
+  }, [])
+
+  const Hello = () => {
+    if (greetingFromBlockchain) {
+      return "Hello "
+    } else {
+      return ""
+    }
   }
 
   return (
@@ -33,6 +72,8 @@ function App() {
             </Button>
           </InputGroup>
         </Form>
+
+        <Hello className='hello'/>
       </main>
     </div>
   );
