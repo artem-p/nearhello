@@ -1,4 +1,7 @@
-header, body {
-    padding: 10px;
+body {
     background-color: rgb(249, 249, 249) !important;
+}
+
+.app {
+    padding: 10px;
 }
