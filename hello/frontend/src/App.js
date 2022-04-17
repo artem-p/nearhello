@@ -32,18 +32,25 @@ function App() {
 
   async function fetchGreeting() {
     if (greetingInput) {
-      near = await connect(testnet_config);
 
-      const account = await near.account(CONTRACT_NAME)
+      try {
+        near = await connect(testnet_config);
+
+        const account = await near.account(CONTRACT_NAME)
       
-      const contract = await new nearApi.Contract(account, CONTRACT_NAME, {
-        viewMethods: ["hello"],
-      })
+        const contract = await new nearApi.Contract(account, CONTRACT_NAME, {
+          viewMethods: ["hello"],
+        })
 
-      const response = await contract.hello({greeting: greetingInput})
+        const response = await contract.hello({greeting: greetingInput})
 
-      setGreetingFromBlockchain(response)
-      console.log(response)
+        setGreetingFromBlockchain(response)
+        console.log(response)
+      
+      } catch (error) {
+        console.log(error)
+      }
+      
     }
   }
 
