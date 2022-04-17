@@ -34,6 +34,7 @@ function App() {
     if (greetingInput) {
 
       try {
+        
         near = await connect(testnet_config);
 
         const account = await near.account(CONTRACT_NAME)
@@ -45,7 +46,6 @@ function App() {
         const response = await contract.hello({greeting: greetingInput})
 
         setGreetingFromBlockchain(response)
-        console.log(response)
       
       } catch (error) {
         console.log(error)
