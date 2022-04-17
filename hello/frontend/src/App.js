@@ -49,7 +49,7 @@ function App() {
 
   
   const Hello = () => {
-    return greetingFromBlockchain || ''
+    return greetingFromBlockchain ? <h3 className='hello'>{greetingFromBlockchain}!</h3> : ''
   }
 
 
@@ -60,10 +60,10 @@ function App() {
       </header>
 
       <main>
-        <Form onSubmit={(event) => {event.preventDefault(); handleSubmit()}}>
+        <Form className='greeting-form' onSubmit={(event) => {event.preventDefault(); handleSubmit()}}>
           <InputGroup className="greeting-input">
             <FormControl
-              placeholder="Your name"
+              placeholder="What's your name?"
               aria-label=""
               aria-describedby=""
               onChange={(event) => {setGreetingInput(event.target.value)}}
@@ -75,7 +75,7 @@ function App() {
           </InputGroup>
         </Form>
 
-        <Hello className='hello'/>
+        <Hello />
       </main>
     </div>
   );
