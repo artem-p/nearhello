@@ -1,0 +1,8 @@
+{
+  "short_name": "Nearspring Hello",
+  "name": "Nearspring Hello",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
