@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(249, 249, 249) !important;
+    background-color: #f9f9f9 !important;
 }
 
 .app {
@@ -10,29 +10,3 @@ body {
     margin-top: 35px;
     text-align: center;
 }
-
-.greeting-form {
-    margin: 35px auto;
-}
-
-@media screen and (min-width: 700px) {
-  .greeting-form {
-      width: 45% !important;
-    }
-  }
-  
-  @media screen and (min-width: 900px) {
-    .greeting-form {
-      width: 40% !important;
-    }
-  }
-  
-  @media screen and (min-width: 1200px) {
-    .greeting-form {
-      width: 35% !important;
-    }
-  }
-
-  .hello {
-      text-align: center;
-  }
