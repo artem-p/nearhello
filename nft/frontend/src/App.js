@@ -22,6 +22,7 @@ function App() {
 
   let near;
 
+  // odo https://docs.near.org/docs/api/naj-quick-reference#wallet
   
   return (
     <div className="app">
