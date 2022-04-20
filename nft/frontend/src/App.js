@@ -9,10 +9,11 @@ import './App.css';
 function App() {
   const CONTRACT_NAME = 'nearspring-nft.artyom-p.testnet'
 
-  const { connect } = nearApi;
+  const { connect, keyStores, WalletConnection } = nearApi;
 
-  const testnet_config = {
+  const TESTNET_CONFIG = {
     networkId: "testnet",
+    keyStore: new keyStores.BrowserLocalStorageKeyStore(),
     nodeUrl: "https://rpc.testnet.near.org",
     walletUrl: "https://wallet.testnet.near.org",
     helperUrl: "https://helper.testnet.near.org",
@@ -22,8 +23,18 @@ function App() {
 
   let near;
 
-  // odo https://docs.near.org/docs/api/naj-quick-reference#wallet
-  
+  // todo https://docs.near.org/docs/api/naj-quick-reference#wallet
+  // todo https://www.near-sdk.io/zero-to-hero/beginner/logging-in
+  useEffect(() => {
+    const nearConnect = async() => {
+      near = await connect(TESTNET_CONFIG);
+
+      // create wallet connection
+      const wallet = new WalletConnection(near);
+    }
+  })
+
+
   return (
     <div className="app">
       <header className="app-header">
