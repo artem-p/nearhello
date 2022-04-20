@@ -27,8 +27,7 @@ function App() {
   let wallet;
   let user;
 
-  // todo https://docs.near.org/docs/api/naj-quick-reference#wallet
-  // todo https://www.near-sdk.io/zero-to-hero/beginner/logging-in
+  // https://www.near-sdk.io/zero-to-hero/beginner/logging-in-implementation
 
   const signIn = () => {
     wallet.requestSignIn(
@@ -66,8 +65,8 @@ function App() {
         <h1>Nearspring NFT Mint</h1>
         <div id="login">
             { isSignIn
-              ? <button onClick={signOut}>Log out</button>
-              : <button onClick={signIn}>Log in</button>
+              ? <Button onClick={signOut}>Log out</Button>
+              : <Button onClick={signIn}>Log in</Button>
             }
           </div>
       </header>
