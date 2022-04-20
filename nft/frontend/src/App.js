@@ -8,7 +8,9 @@ import './App.css';
 
 function App() {
   const CONTRACT_NAME = 'nearspring-nft.artyom-p.testnet'
+  const APP_NAME = "Nearspring NFT"
 
+  const [isSignIn, setIsSignIn] = useState(false)
   const { connect, keyStores, WalletConnection } = nearApi;
 
   const TESTNET_CONFIG = {
@@ -22,16 +24,39 @@ function App() {
   };
 
   let near;
+  let wallet;
+  let user;
 
   // todo https://docs.near.org/docs/api/naj-quick-reference#wallet
   // todo https://www.near-sdk.io/zero-to-hero/beginner/logging-in
+
+  const signIn = () => {
+    wallet.requestSignIn(
+      CONTRACT_NAME,
+      APP_NAME
+    );
+  };
+
+  
+  const signOut = () => {
+    wallet.signOut();
+    setIsSignIn(false)
+  };
+
+
   useEffect(() => {
     const nearConnect = async() => {
       near = await connect(TESTNET_CONFIG);
 
-      // create wallet connection
-      const wallet = new WalletConnection(near);
+      wallet = new WalletConnection(near);
+
+      if (wallet.getAccountId()) {
+        user = wallet.getAccountId()
+        setIsSignIn(true)
+      }
     }
+
+    nearConnect()
   })
 
 
@@ -39,6 +64,12 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Nearspring NFT Mint</h1>
+        <div id="login">
+            { isSignIn
+              ? <button onClick={signOut}>Log out</button>
+              : <button onClick={signIn}>Log in</button>
+            }
+          </div>
       </header>
 
       <main>
