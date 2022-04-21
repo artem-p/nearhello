@@ -28,7 +28,6 @@ function App() {
   let wallet;
   let user;
 
-  // https://www.near-sdk.io/zero-to-hero/beginner/logging-in-implementation
 
   const signIn = () => {
     wallet.requestSignIn(
@@ -59,6 +58,7 @@ function App() {
     nearConnect()
   })
 
+  
   const mint = () => {
     if (isSignIn && wallet && user) {
       const account = new nearApi.Account(near, user)
@@ -74,6 +74,7 @@ function App() {
     }
   }
 
+  
   return (
     <div className="app">
       <header className="app-header">
