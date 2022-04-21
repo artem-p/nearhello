@@ -58,6 +58,20 @@ function App() {
     nearConnect()
   })
 
+  const mint = () => {
+    if (isSignIn && wallet && user) {
+      const account = new nearApi.Account(near, user)
+      const contract = new nearApi.Contract(
+        wallet.account(),
+        CONTRACT_NAME,
+        {
+          viewMethods: ["check_token"],
+          changeMethods: ["nft_mint"]
+        }
+
+      )
+    }
+  }
 
   return (
     <div className="app">
@@ -71,7 +85,7 @@ function App() {
           </div>
 
           <div className='mint'>
-            <Button disabled={!isSignIn}>Mint</Button>
+            <Button disabled={!isSignIn} onClick={mint}>Mint</Button>
           </div>
       </header>
 
