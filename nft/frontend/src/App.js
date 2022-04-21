@@ -7,8 +7,9 @@ import { Form, InputGroup, FormControl, Button, Placeholder } from 'react-bootst
 import './App.css';
 
 function App() {
-  const CONTRACT_NAME = 'nearspring-nft.artyom-p.testnet'
   const APP_NAME = "Nearspring NFT"
+  const CONTRACT_NAME = 'nearspring-nft.artyom-p.testnet'
+  const IMAGE_URL = 'https://bafybeiaakj6irj7cqkte5cpknsjgh3a73c3rabb5iwbgfm2qynkvmc2pf4.ipfs.dweb.link/'
 
   const [isSignIn, setIsSignIn] = useState(false)
   const { connect, keyStores, WalletConnection } = nearApi;
