@@ -63,11 +63,15 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Nearspring NFT Mint</h1>
-        <div id="login">
+        <div className="login">
             { isSignIn
               ? <Button onClick={signOut}>Log out</Button>
               : <Button onClick={signIn}>Log in</Button>
             }
+          </div>
+
+          <div className='mint'>
+            <Button disabled={!isSignIn}>Mint</Button>
           </div>
       </header>
 

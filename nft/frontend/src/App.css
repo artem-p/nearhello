@@ -10,3 +10,7 @@ body {
     margin-top: 35px;
     text-align: center;
 }
+
+.login, .mint {
+    margin-top: 25px;
+}
