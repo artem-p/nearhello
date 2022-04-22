@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect} from 'react';
 import * as nearApi from 'near-api-js';
 import { Form, InputGroup, FormControl, Button, Placeholder } from 'react-bootstrap';
-
+import BN from 'bn.js'
 
 import './App.css';
 
@@ -59,18 +59,36 @@ function App() {
   })
 
   
-  const mint = () => {
+  const mint = async () => {
     if (isSignIn && wallet && user) {
-      const account = new nearApi.Account(near, user)
-      const contract = new nearApi.Contract(
-        wallet.account(),
-        CONTRACT_NAME,
-        {
-          viewMethods: ["check_token"],
-          changeMethods: ["nft_mint"]
-        }
+      try {
+        const account = new nearApi.Account(near, user)
+        const contract = new nearApi.Contract(
+          wallet.account(),
+          CONTRACT_NAME,
+          {
+            viewMethods: ["check_token"],
+            changeMethods: ["nft_mint"]
+          }
 
-      )
+        )
+
+        await contract.nft_mint(
+          {
+            token_id: `${user}-nearspring-nft`,
+            metadata: {
+              title: "Nearspring hackathon NFT",
+              description: "Flowers - acrylic painting",
+              media: IMAGE_URL,
+            },
+
+            receiver_id: user,
+          },
+          300000000000000,
+          new BN("1000000000000000000000000"))
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
