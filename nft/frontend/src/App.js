@@ -13,6 +13,9 @@ import './App.css';
 //  https://docs.near.org/docs/tutorials/contracts/nfts/minting-nft-frontend
 //  https://docs.near.org/docs/tutorials/contracts/nfts/events
 
+
+// todo mint from cli with different accounts
+
 function App() {
   const APP_NAME = "Mint NFT"
   const CONTRACT_NAME = 'nft.artyom-p.testnet'
