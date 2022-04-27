@@ -7,8 +7,12 @@ import BN from 'bn.js'
 import './App.css';
 
 
-// todo not working with second account
-// https://docs.near.org/docs/tutorials/contracts/nfts/minting-nft-frontend
+//  near deploy --wasmFile res/non_fungible_token.wasm --accountId nft.artyom-p.testnet
+//  near call nft.artyom-p.testnet new_default_meta '{"owner_id": "nft.artyom-p.testnet"}' --accountId nft.artyom-p.testnet
+
+//  https://docs.near.org/docs/tutorials/contracts/nfts/minting-nft-frontend
+//  https://docs.near.org/docs/tutorials/contracts/nfts/events
+
 function App() {
   const APP_NAME = "Mint NFT"
   const CONTRACT_NAME = 'nft.artyom-p.testnet'
@@ -65,13 +69,15 @@ function App() {
   const mint = async () => {
     if (isSignIn && wallet && user) {
       try {
-        const account = new nearApi.Account(near, user)
+        const account = await near.account(CONTRACT_NAME)
+
         const contract = new nearApi.Contract(
           wallet.account(),
           CONTRACT_NAME,
           {
             viewMethods: ["check_token"],
-            changeMethods: ["nft_mint"]
+            changeMethods: ["nft_mint"],
+            sender: wallet.account()
           }
 
         )
@@ -99,7 +105,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Nearspring NFT Mint</h1>
+        <h1>NFT Mint</h1>
         <div className="login">
             { isSignIn
               ? <Button onClick={signOut}>Log out</Button>

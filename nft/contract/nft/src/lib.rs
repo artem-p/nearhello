@@ -98,7 +98,12 @@ impl Contract {
         receiver_id: ValidAccountId,
         token_metadata: TokenMetadata,
     ) -> Token {
-        self.tokens.mint(token_id, receiver_id, Some(token_metadata))
+        // todo mint or internal_mint ?
+        // https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs
+
+        // zero to hero nft?
+
+        self.tokens.internal_mint(token_id, receiver_id, Some(token_metadata))
     }
 }
 
