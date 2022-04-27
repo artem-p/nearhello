@@ -6,6 +6,10 @@ import BN from 'bn.js'
 
 import './App.css';
 
+
+// todo not working with second account
+// https://docs.near.org/docs/tutorials/contracts/nfts/minting-nft-frontend
+// call view default meta from this contract
 function App() {
   const APP_NAME = "Mint NFT"
   const CONTRACT_NAME = 'nft.artyom-p.testnet'
