@@ -75,9 +75,9 @@ function App() {
 
         await contract.nft_mint(
           {
-            token_id: `${user}-nearspring-nft`,
-            metadata: {
-              title: "Nearspring hackathon NFT",
+            token_id: `${user}-hello-nft`,
+            token_metadata: {
+              title: "Flowers NFT",
               description: "Flowers - acrylic painting",
               media: IMAGE_URL,
             },
