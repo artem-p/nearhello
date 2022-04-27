@@ -7,8 +7,8 @@ import BN from 'bn.js'
 import './App.css';
 
 function App() {
-  const APP_NAME = "Nearspring NFT"
-  const CONTRACT_NAME = 'nearspring-nft.artyom-p.testnet'
+  const APP_NAME = "Mint NFT"
+  const CONTRACT_NAME = 'nft.artyom-p.testnet'
   const IMAGE_URL = 'https://bafybeiaakj6irj7cqkte5cpknsjgh3a73c3rabb5iwbgfm2qynkvmc2pf4.ipfs.dweb.link/'
 
   const [isSignIn, setIsSignIn] = useState(false)
