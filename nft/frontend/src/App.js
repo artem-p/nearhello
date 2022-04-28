@@ -14,7 +14,9 @@ import './App.css';
 //  https://docs.near.org/docs/tutorials/contracts/nfts/events
 
 
-// todo mint from cli with different accounts
+// todo
+//  near call nft.artyom-p.testnet nft_mint '{"token_id": "3", "receiver_id": "'artyom-p.testnet'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafybeiaakj6irj7cqkte5cpknsjgh3a73c3rabb5iwbgfm2qynkvmc2pf4.ipfs.dweb.link/", "copies": 1}}' --accountId artyom-p.testnet --deposit 0.1
+//  not working. works if --accountId nft.artyom-p.testnet
 
 function App() {
   const APP_NAME = "Mint NFT"
